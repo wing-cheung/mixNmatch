@@ -64,12 +64,16 @@ function App() {
     }
   };
 
+  const resetUrl = () => {
+    return window.location.href.includes("localhost")
+      ? "http://localhost:3000/"
+      : "https://wing-cheung.github.io/mixNmatch/";
+  };
+
   return (
     <Body>
       <TitleRow>
-        <Title
-          onClick={() => (window.location.href = "http://localhost:3000/")}
-        >
+        <Title onClick={() => (window.location.href = resetUrl())}>
           <img src={Icon} width="50" alt="coffee machine logo" />
           <Text>mix & match</Text>
         </Title>
