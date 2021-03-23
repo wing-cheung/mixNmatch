@@ -6,17 +6,7 @@ const PredefinedList = styled.div`
   position: relative;
   margin-bottom: 20px;
 `;
-
-const ListWrapper = styled.div`
-  position: relative;
-  &:hover {
-    > div.delete {
-      visibility: visible;
-    }
-  }
-`;
-
-const ListItem = styled.div`
+const Item = styled.div`
   cursor: pointer;
   box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.3);
   display: flex;
@@ -28,6 +18,8 @@ const ListItem = styled.div`
   font-size: 24px;
   width: 100px;
   height: 40px;
+`;
+const ListItem = styled(Item)`
   background-color: #795548;
   &:hover {
     background-color: #bcaaa4;
@@ -36,15 +28,21 @@ const ListItem = styled.div`
   ${({ active }) => active && "background: #bcaaa4"};
 `;
 
-const Controls = styled.div`
-  position: absolute;
-  visibility: hidden;
-  cursor: pointer;
-  top: 15px;
-  right: 15px;
+const ResetButton = styled(Item)`
+  cursor: ${({ available }) => (available ? "pointer" : "not-allowed")};
+  background-color: #795548;
+  opacity: ${({ available }) => (available ? 1 : 0.6)};
+  &:hover {
+    ${({ available }) =>
+      available &&
+      `
+        background-color: #bcaaa4;
+        transition: background-color 0.5s ease-in-out;
+      `}
+  }
 `;
 
-const PredefinedLists = ({ setNames, removeList }) => {
+const PredefinedLists = ({ setNames }) => {
   const [activeList, setActiveItem] = useState("");
   const predefinedLists = JSON.parse(
     window.localStorage.getItem("predefinedLists")
@@ -56,27 +54,24 @@ const PredefinedLists = ({ setNames, removeList }) => {
     setActiveItem(item);
   };
 
-  /* const handleReset = () => {
+  const handleReset = () => {
     setNames([]);
     setActiveItem("");
-  }; */
+  };
 
   return (
     <PredefinedList>
       {keys.map((list) => (
-        <ListWrapper>
-          <ListItem
-            active={list === activeList}
-            onClick={() => handleClick(list)}
-          >
-            {list}
-          </ListItem>
-          <Controls className="delete" onClick={() => removeList(list)}>
-            ⓧ
-          </Controls>
-        </ListWrapper>
+        <ListItem
+          active={list === activeList}
+          onClick={() => handleClick(list)}
+        >
+          {list}
+        </ListItem>
       ))}
-      {/* <ListItem onClick={() => handleReset()}>reset</ListItem> */}
+      <ResetButton available={activeList !== ""} onClick={() => handleReset()}>
+        reset
+      </ResetButton>
     </PredefinedList>
   );
 };

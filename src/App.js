@@ -86,13 +86,6 @@ function App() {
     }
   };
 
-  const removeList = (list) => {
-    const object = JSON.parse(window.localStorage.getItem("predefinedLists"));
-    delete object[list];
-    window.localStorage.setItem("predefinedLists", JSON.stringify(object));
-    setNames([]);
-  };
-
   const resetUrl = () => {
     return window.location.href.includes("localhost")
       ? "http://localhost:3000/"
@@ -108,7 +101,7 @@ function App() {
         </Title>
       </TitleRow>
       {hasPredefinedList && !showMatch && (
-        <PredefinedLists setNames={setNames} removeList={removeList} />
+        <PredefinedLists setNames={setNames} />
       )}
 
       {showMatch ? (
