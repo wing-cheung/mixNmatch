@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import List from "./List";
 import Match from "./Match";
+import PredefinedLists from "./PredefinedLists";
 import Icon from "./assets/coffee_maker-24px.svg";
 
 const Body = styled.div`
@@ -36,32 +37,34 @@ const Text = styled.span`
 function App() {
   const [names, setNames] = useState([]);
   const [showMatch, setShowMatch] = useState(false);
+  const [hasPredefinedList, setHasPredefinedList] = useState(false);
 
   useEffect(() => {
     var urlParams = new URLSearchParams(window.location.search);
     let list = [];
     let name = "";
+    const predefinedLists = window.localStorage.getItem("predefinedLists");
     if (urlParams.get("list")) {
       const givenList = urlParams.get("list");
       list = givenList.split(",");
+
       if (urlParams.get("name")) {
         name = urlParams.get("name");
-        const testObject = {};
-        testObject[name] = list;
+        const newObject = {};
+        newObject[name] = list;
+
         window.localStorage.setItem(
           "predefinedLists",
-          JSON.stringify(testObject)
+          JSON.stringify({ ...JSON.parse(predefinedLists), ...newObject })
         );
       }
     }
-    if (window.localStorage.getItem("predefinedLists")) {
-      const predefinedLists = JSON.parse(
-        window.localStorage.getItem("predefinedLists")
-      );
-      const keys = Object.keys(predefinedLists);
-      const firstItem = keys[0];
-      const predefinedNames = predefinedLists[firstItem];
-      setNames(predefinedNames);
+
+    if (
+      predefinedLists &&
+      Object.keys(JSON.parse(predefinedLists)).length > 0
+    ) {
+      setHasPredefinedList(true);
     } else {
       setNames(list);
     }
@@ -83,6 +86,13 @@ function App() {
     }
   };
 
+  const removeList = (list) => {
+    const object = JSON.parse(window.localStorage.getItem("predefinedLists"));
+    delete object[list];
+    window.localStorage.setItem("predefinedLists", JSON.stringify(object));
+    setNames([]);
+  };
+
   const resetUrl = () => {
     return window.location.href.includes("localhost")
       ? "http://localhost:3000/"
@@ -97,6 +107,9 @@ function App() {
           <Text>mix & match</Text>
         </Title>
       </TitleRow>
+      {hasPredefinedList && !showMatch && (
+        <PredefinedLists setNames={setNames} removeList={removeList} />
+      )}
 
       {showMatch ? (
         <Match names={names} />
