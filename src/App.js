@@ -39,13 +39,32 @@ function App() {
 
   useEffect(() => {
     var urlParams = new URLSearchParams(window.location.search);
-    let listOfNames = [];
+    let list = [];
+    let name = "";
     if (urlParams.get("list")) {
       const givenList = urlParams.get("list");
-      listOfNames = givenList.split(",");
+      list = givenList.split(",");
+      if (urlParams.get("name")) {
+        name = urlParams.get("name");
+        const testObject = {};
+        testObject[name] = list;
+        window.localStorage.setItem(
+          "predefinedLists",
+          JSON.stringify(testObject)
+        );
+      }
     }
-
-    setNames(listOfNames);
+    if (window.localStorage.getItem("predefinedLists")) {
+      const predefinedLists = JSON.parse(
+        window.localStorage.getItem("predefinedLists")
+      );
+      const keys = Object.keys(predefinedLists);
+      const firstItem = keys[0];
+      const predefinedNames = predefinedLists[firstItem];
+      setNames(predefinedNames);
+    } else {
+      setNames(list);
+    }
   }, []);
 
   const removeName = (deletedName) => {

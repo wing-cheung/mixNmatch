@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import useSound from "use-sound";
 import drum2 from "./sounds/drum2.mp3";
+import coffeemaker from "./sounds/coffee-maker.mp3";
 import Match2 from "./assets/match-2.png";
 
 const ListWrapper = styled.div`
@@ -76,7 +77,7 @@ const StartMatching = styled.img`
 `;
 
 const List = ({ removeName, names, setShowMatch, addName }) => {
-  const [play] = useSound(drum2);
+  const [play] = useSound(coffeemaker);
   const handleClick = () => {
     setTimeout(play(), 2000);
     setShowMatch(true);
