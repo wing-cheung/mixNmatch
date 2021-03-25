@@ -6,8 +6,11 @@ import PredefinedLists from "./PredefinedLists";
 import Icon from "./assets/coffee_maker-24px.svg";
 
 const Body = styled.div`
-  width: 960px;
-  margin: 0 auto;
+  width: 100%;
+  @media (min-width: 768px) {
+    width: 960px;
+    margin: 0 auto;
+  }
 `;
 
 const TitleRow = styled.div`

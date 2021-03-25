@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const PredefinedList = styled.div`
   display: flex;
+  flex-wrap: wrap;
   position: relative;
   margin-bottom: 20px;
 `;

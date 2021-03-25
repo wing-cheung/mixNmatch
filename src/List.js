@@ -8,10 +8,17 @@ import Match2 from "./assets/match-2.png";
 const ListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 790px;
+
+  flex-direction: column;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    width: 790px;
+  }
 `;
 
 const NameWrapper = styled.div`
+  display: flex;
+  width: 100%;
   position: relative;
   transform: rotate(2deg);
 
@@ -31,6 +38,9 @@ const NameWrapper = styled.div`
       visibility: visible;
     }
   }
+  @media (min-width: 768px) {
+    width: auto;
+  }
 `;
 
 const NameItem = styled.div`
@@ -42,17 +52,26 @@ const NameItem = styled.div`
   margin: 10px;
   font-family: "Handlee", cursive;
   font-size: 24px;
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 30px;
   background: #bcaaa4;
+  @media (min-width: 768px) {
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 const AddNameItem = styled(NameItem)`
   cursor: pointer;
   font-size: 48px;
+  width: auto;
   &:hover {
     font-size: 76px;
     transform: font-size 3s ease-in;
+  }
+  @media (min-width: 768px) {
+    width: 100px;
+    height: 100px;
   }
 `;
 
@@ -66,13 +85,17 @@ const Controls = styled.div`
 
 const StartMatching = styled.img`
   display: flex;
-  margin-top: -40px;
-  margin-right: -100px;
   margin-left: auto;
   cursor: pointer;
+  width: 220px;
   z-index: 2;
   &:hover {
     transform: rotate(10deg);
+  }
+  @media (min-width: 768px) {
+    margin-top: -40px;
+    margin-right: -100px;
+    width: 300px;
   }
 `;
 
@@ -99,7 +122,6 @@ const List = ({ removeName, names, setShowMatch, addName }) => {
           title="click me"
           alt="mix & match"
           src={Match2}
-          width="300"
           onClick={handleClick}
         />
       )}

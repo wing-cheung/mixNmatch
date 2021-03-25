@@ -10,7 +10,12 @@ body {
   background-image: url("./assets/beans-02.png");
   background-repeat: no-repeat;
   background-position-x: right;
-  background-size: 570px;
+  background-size: 230px;
+}
+@media (min-width: 768px) {
+  body {
+    background-size: 570px;
+  }
 }
 
 code {

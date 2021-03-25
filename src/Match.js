@@ -9,9 +9,11 @@ const MugImages = [Mug1, Mug2];
 
 const Wrapper = styled.div`
   display: flex;
-  margin-top: 50px;
   flex-wrap: wrap;
   justify-content: space-around;
+  @media (min-width: 768px) {
+    margin-top: 50px;
+  }
 `;
 
 const CoffeeMug = styled.div`
