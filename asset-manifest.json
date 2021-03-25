@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/mixNmatch/static/css/main.cc1cd0d4.chunk.css",
-    "main.js": "/mixNmatch/static/js/main.d30cbb04.chunk.js",
-    "main.js.map": "/mixNmatch/static/js/main.d30cbb04.chunk.js.map",
+    "main.css": "/mixNmatch/static/css/main.aa4addac.chunk.css",
+    "main.js": "/mixNmatch/static/js/main.a78d4470.chunk.js",
+    "main.js.map": "/mixNmatch/static/js/main.a78d4470.chunk.js.map",
     "runtime-main.js": "/mixNmatch/static/js/runtime-main.dd41185a.js",
     "runtime-main.js.map": "/mixNmatch/static/js/runtime-main.dd41185a.js.map",
     "static/js/2.5047ede2.chunk.js": "/mixNmatch/static/js/2.5047ede2.chunk.js",
@@ -12,7 +12,7 @@
     "static/js/4.8bdab6ab.chunk.js": "/mixNmatch/static/js/4.8bdab6ab.chunk.js",
     "static/js/4.8bdab6ab.chunk.js.map": "/mixNmatch/static/js/4.8bdab6ab.chunk.js.map",
     "index.html": "/mixNmatch/index.html",
-    "static/css/main.cc1cd0d4.chunk.css.map": "/mixNmatch/static/css/main.cc1cd0d4.chunk.css.map",
+    "static/css/main.aa4addac.chunk.css.map": "/mixNmatch/static/css/main.aa4addac.chunk.css.map",
     "static/js/2.5047ede2.chunk.js.LICENSE.txt": "/mixNmatch/static/js/2.5047ede2.chunk.js.LICENSE.txt",
     "static/js/3.e6042539.chunk.js.LICENSE.txt": "/mixNmatch/static/js/3.e6042539.chunk.js.LICENSE.txt",
     "static/media/index.css": "/mixNmatch/static/media/beans-02.458d48a1.png",
@@ -27,7 +27,7 @@
   "entrypoints": [
     "static/js/runtime-main.dd41185a.js",
     "static/js/2.5047ede2.chunk.js",
-    "static/css/main.cc1cd0d4.chunk.css",
-    "static/js/main.d30cbb04.chunk.js"
+    "static/css/main.aa4addac.chunk.css",
+    "static/js/main.a78d4470.chunk.js"
   ]
 }
